@@ -49,21 +49,19 @@ class TestChunkLoaderANDT : Test {
 
 
 
-//	Void testLoadChunkWorksWithValid10Data() {
-//
-//		// stupid java implicit primitive conversion...
-//		byte[] byte10 = new byte[fmp10.length];
-//		for (int i = 0; i < byte10.length; i++)
-//			byte10[i] = (byte) fmp10[i];
-//
-//		InputStream 	inputStream = new ByteArrayInputStream(byte10);
-//		ChunkLoaderANDT chunkLoader = (ChunkLoaderANDT) new MapLoader().createChunkLoader(inputStream);
-//		Map map = new Map();
-//		map.getMapHeader().setMapVersionMajor(1);
-//		map.getMapHeader().setMapVersionMinor(0);
-//		map.getMapHeader().setBlockSize(32);
-//		map.getMapHeader().setMapType(2);
-//		chunkLoader.setLSB(true);
-//		chunkLoader.loadChunk(map);
-//	}
+	Void testLoadChunkWorksWithValid10Data() {
+		buf := Buf()
+		fmp10.each |byte| {   
+			buf.write(byte)
+		}
+		buf.flip
+
+		chunkLoader := MapLoader().createChunkLoader(buf.in, Endian.little)
+		map := MappyMap()
+		map.mapHeader.mapVersion = Version([1, 0])
+		map.mapHeader.blockSize = 32
+		map.mapHeader.mapType = MapType.FMP10
+		map.mapHeader.endian = Endian.little
+		chunkLoader.loadChunk(map)
+	}
 }

@@ -4,7 +4,7 @@ class Build : BuildPod {
 
 	new make() {
 		podName = "afFantomMappy"
-		summary = "A playback library for square, hexagonal or isometric Mappy tile maps"
+		summary = "A playback library for square, hexagonal and isometric Mappy tile maps."
 		version = Version("1.0.3") 
 
 		meta = [
@@ -14,6 +14,9 @@ class Build : BuildPod {
 		]
 		
 		depends = [
+			"fwt 1.0",
+			"web 1.0",
+			
 			"sys 1.0", 
 			"gfx 1.0" 
 		]

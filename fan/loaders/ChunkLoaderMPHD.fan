@@ -12,7 +12,6 @@ internal class ChunkLoaderMPHD : ChunkLoader {
     // ---- Public Methods ----------------------------------------------------
 
 	override Void loadChunk(MappyMap map) {
-		log.level = LogLevel.debug
 		header := map.mapHeader
 		
 		// read and verify the map version

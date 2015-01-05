@@ -1,23 +1,25 @@
 using gfx::Rect
 using gfx::Size
 
-**
-** Renders a `Layer` of a `MappyMap` onto the screen. This class may be used independently (or 
-** even without) a `MapViewer`.
+** Renders a `Layer` to the screen. 
+** This class may be used independently of (or even without) a `MapViewer`.
 ** 
 ** See `MapViewer` for a discussion on offsets.
-** 
 @Js
 class LayerViewer : Viewer {
 	
 	private Int		tallestPillar
+	
+	** The 'Layer' this 'Viewer' renders.
 			Layer	layer			{ private set }
 	
+	** Creates a 'LayerViewer'.
 	new make(Layer layer, MapHeader mapHeader, Renderer renderer, Rect viewBounds) : super(mapHeader, renderer, viewBounds) {
 		this.layer = layer
 		pillarRiserMode	= mapHeader.risingPillarMode
 	}
 
+	@NoDoc
 	override Void draw(Obj gfx, BlockLayer[] blockLayers := [BlockLayer.background, BlockLayer.foreground1, BlockLayer.foreground2, BlockLayer.foreground3]) {
 
 		drawInternal(gfx, viewBounds, blockLayers)
@@ -26,6 +28,7 @@ class LayerViewer : Viewer {
 //		drawInternalOld(gfx, true, true, true, true, true, super.viewBounds.x, super.viewBounds.y, super.viewBounds.w, super.viewBounds.h)
 	}
 
+	@NoDoc
 	override Void drawPartial(Obj gfx, Rect dirty, BlockLayer[] blockLayers := [BlockLayer.background, BlockLayer.foreground1, BlockLayer.foreground2, BlockLayer.foreground3]) {
 		drawInternal(gfx, dirty, [BlockLayer.background, BlockLayer.foreground1, BlockLayer.foreground2, BlockLayer.foreground3])		
 	}
@@ -58,7 +61,7 @@ class LayerViewer : Viewer {
 				
 				blockLayers.each |blockLayer| {
 					imageIndex := block.imageIndex[blockLayer]
-					renderer.drawImage(gfx, imageIndex, dstPixX, dstPixY, RendererDrawMode.drawAll)					
+					renderer.drawImage(gfx, imageIndex, dstPixX, dstPixY, RendererDrawMode.drawAll)
 				}
 				
 				mapBlkX++
@@ -135,7 +138,7 @@ class LayerViewer : Viewer {
 //				
 //				Bool notDrawn := true
 //				// FIXME- was a do-while
-//				while (notDrawn || (pillarRiserMode && block.flag[BlockPillerFlag.attachNext.toBlockflag])) {
+//				while (notDrawn || (pillarRiserMode && block.flag[BlockPillarFlag.attachNext.toBlockflag])) {
 //					notDrawn = false;
 //					
 //					blockIndex++
@@ -204,7 +207,7 @@ class LayerViewer : Viewer {
 //					blockIndex--
 //
 //					// FIXME
-//					while (pillarRiserMode && block.flag[BlockPillerFlag.attachNext.toBlockflag]) {
+//					while (pillarRiserMode && block.flag[BlockPillarFlag.attachNext.toBlockflag]) {
 //						blockIndex++
 ////						block = layer.getBlockAtIndex(blockIndex)
 //						

@@ -1,9 +1,7 @@
 using gfx::Color
 using gfx::Size
 
-**
-** MapHeader :: This class represents the data held within the MPHD chunk.
-** 
+** Represents the data held within the 'MPHD' chunk.
 @Js
 class MapHeader {
 	
@@ -58,11 +56,13 @@ class MapHeader {
 		return Size(w, h)
 	}
 	
+	** Returns 'true' is this map is isometric (has a non-default 'blockStagger').
 	Bool isIsometric() {
 		(blockStagger != null) && (blockStagger != Size.defVal)
 	}
 }
 
+** The 'FMP' type / version of the map.
 @Js
 enum class MapType {
 	** FMP 0.5

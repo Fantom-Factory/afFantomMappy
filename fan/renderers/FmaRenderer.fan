@@ -2,6 +2,7 @@ using gfx::Image
 using gfx::Rect
 using gfx::Size
 
+** A `Renderer` for Mappy '.fma' files. FMA files are similar to FMP files except they do not contain image data.  
 @Js
 const class FmaRenderer : Renderer {
 	

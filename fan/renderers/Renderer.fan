@@ -1,19 +1,21 @@
 using gfx::Rect
 
+** Implement to define a low level renderer for block images.
 @Js
 mixin Renderer {
 	
-	** Draws an image as given by 'imageIndex' at the given coordinates.
+	** Draws an image of a 'Block' as given by 'imageIndex' at the given coordinates.
 	abstract Void drawImage(Obj gfx, Int imageIndex, Int dstPixX, Int dstPixY, RendererDrawMode drawMode)	
 	
-	** This is called just before a `Layer` is drawn to allow the 'Renderer' to set the desired 
-	** clipping region.
+	** Called just before a `Layer` is drawn so the desired clipping region may be set.
 	virtual Void setClip(Obj gfx, Rect viewBounds) {}
 
-	** This is called after a `Layer` is drawn to restore the clipping region to what it used to be.
+	** Called after a `Layer` is drawn to restore the clipping region to what it used to be.
 	virtual Void restoreClip(Obj gfx) {}
 }
 
+
+** Used in Pillar Rising Mode to determine which side of the block should be drawn.
 @Js
 enum class RendererDrawMode {
 	

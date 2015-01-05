@@ -1,13 +1,14 @@
 
-**
-** A standard bean class representing a .FMP map. See `MapViewer` for details on rendering a 
-** `MappyMap` to the screen.
-** 
+** Loads `MappyMap` instances from '.FMP' data streams. 
+** See `MapViewer` for details on rendering a `MappyMap` to the screen.
 @Js
 class MapLoader {
-	private const static Log	log 			:= Log.get(MapLoader#.name)
+	private static const Log log := MapLoader#.pod.log
 	
+	@NoDoc
 	protected Str:Type			chunkLoaders 	:= [:]
+
+	@NoDoc
 	protected Int				mapSize
 
 	
@@ -24,7 +25,7 @@ class MapLoader {
 
     // ---- Public Methods ----------------------------------------------------
 
-	** Create a `MappyMap` from the given input stream of .FMP data.
+	** Create a `MappyMap` from the given input stream of '.FMP' data.
 	** 
 	** Note this method closes the input stream.
 	static MappyMap loadMap(InStream fmpStream) {
@@ -122,7 +123,6 @@ class MapLoader {
 			if (chunkLoader != null) {
 				log.warn(errorMessage)
 			} else {
-				log.warn("Sya yo!!! $e.msg")
 				throw ChunkLoadErr(errorMessage, e)
 			}
 		}

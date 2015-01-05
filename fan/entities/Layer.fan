@@ -1,20 +1,21 @@
 using gfx::Size
 
-** 
-** Represents one of the layers in a `MappyMap`. See `LayerViewer` for details on rendering a 
-** 'Layer' to the screen.
-** 
+** Represents one of the layers in a `MappyMap`. 
+** See `LayerViewer` for details on rendering a 'Layer' to the screen.
 @Js
 class Layer {
-	
     private MapHeader		mapHeader
 	private Block[] 		blocks
 	private AnimBlock[]		animBlocks
 	private LayerData		layerData
 	
+	** The size of the layer in blocks.
 	const 	Size 			sizeInBlocks
+	
+	** The size of the layer in pixels.
 	const 	Size 			sizeInPixels
 	
+	** Creates a 'Layer'.
 	new make(MapHeader mapHeader, LayerData layerData, Block[] blocks, AnimBlock[] animBlocks) {
 		this.mapHeader		= mapHeader
 		this.layerData 		= layerData
@@ -24,8 +25,6 @@ class Layer {
 		this.sizeInPixels	= mapHeader.mapSizeInPixels	// TODO: is this correct?
 	}
 
-	
-	
 	** Returns the `Block` at the given block coordinates.
 	** 
 	** If the block is an animation block then the current block in the anim sequence is returned.
@@ -34,8 +33,6 @@ class Layer {
 		return blocks[blockIndex]
 	}
 	
-	
-
 	** Returns the `AnimBlock` at the given block coordinates.
 	**  
 	** If the block is not an `AnimBlock` an 'ArgErr' is thrown.
@@ -52,21 +49,16 @@ class Layer {
 		return animBlocks[-blockIndex - 1]
 	}
 
-
-
 	** Checks if the block at the given coordinates is an `AnimBlock`.
 	Bool isAnimBlock(Int blockX, Int blockY) {
 		return layerData.get(blockX, blockY) < 0
 	}	
-	
 
 	** Performs a collision detection test at the given pixel coordinates using the `Block`s 
 	** collision flags.
 	Bool isCollisionAt(Int pixelX, Int pixelY) {
 		collisionAt(pixelX, pixelY) != null
 	}
-
-
 
 	** Performs a collision detection test at the given pixel coordinates using the `Block`s 
 	** collision flags. Returns null if n collision occurred.
@@ -102,6 +94,7 @@ class Layer {
 }
 
 
+** Represents the data in a `Layer`. It's essentially a 2D array of 'Ints'. 
 @Js
 class LayerData {
 	internal const	Size	size	
@@ -112,19 +105,23 @@ class LayerData {
 		data.fill(0, size.w * size.h)
 	}
 	
+	** Gets the data at the given coordinates.
+	** Throws 'ArgErr' should the coordinates be out of bounds.
 	Int get(Int x, Int y) {
 		checkXY(x, y)
 		index := (y * size.w) + x
 		return data[index]
 	}
 	
+	** Sets the data at the given coordinates.
+	** Throws 'ArgErr' should the coordinates be out of bounds.
 	Void set(Int x, Int y, Int val) {
 		checkXY(x, y)
 		index := (y * size.w) + x
 		data[index] = val
 	}
 
-	Void div(Int x, Int y, Int divVal) {
+	internal Void div(Int x, Int y, Int divVal) {
 		checkXY(x, y)
 		index := (y * size.w) + x
 		data[index] /= divVal

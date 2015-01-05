@@ -91,25 +91,25 @@ internal class ChunkLoaderANDT : ChunkLoader {
 	protected static |AnimBlock| fromType(Int type) {
 		switch (type) {
 			case 0:
-				return AnimFunc.instance.none;
+				return AnimFunc().none;
 			case 1:
-				return AnimFunc.instance.loopForward;
+				return AnimFunc().loopForward;
 			case 2:
-				return AnimFunc.instance.loopReverse;
+				return AnimFunc().loopReverse;
 			case 3:
-				return AnimFunc.instance.animateOnce;
+				return AnimFunc().animateOnce;
 			case 4:
-				return AnimFunc.instance.animateOnceAndHalt;
+				return AnimFunc().animateOnceAndHalt;
 			case 5:
-				return AnimFunc.instance.pingPongForwardOutwardLeg;
+				return AnimFunc().pingPongForwardOutwardLeg;
 			case 6:
-				return AnimFunc.instance.pingPongForwardReturnLeg;
+				return AnimFunc().pingPongForwardReturnLeg;
 			case 7:
-				return AnimFunc.instance.pingPongReverseOutwardLeg;
+				return AnimFunc().pingPongReverseOutwardLeg;
 			case 8:
-				return AnimFunc.instance.pingPongReverseReturnLeg;
+				return AnimFunc().pingPongReverseReturnLeg;
 			case 9:
-				return AnimFunc.instance.animateOnceFinished;
+				return AnimFunc().animateOnceFinished;
 			default:
 				throw Err("AnimBlock Type '$type' is not supported");
 		}

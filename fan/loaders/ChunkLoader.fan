@@ -1,7 +1,7 @@
 
 @Js
 abstract internal class ChunkLoader {
-	protected const Log 	log 			:= Log.get(typeof.name)
+	protected static const Log 	log := ChunkLoader#.pod.log
 
 	** The 4 character name of the chunk. e.g. ANDT, BODY
 	Str		chunkName

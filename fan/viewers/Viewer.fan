@@ -2,7 +2,7 @@ using gfx::Point
 using gfx::Rect
 
 **
-** Renders a `MappyMap` or a `Layer` (dependent on the concrete implementation) onto the screen. 
+** Renders a `MappyMap` or a `Layer` (dependent on the implementation) to the screen. 
 ** By default the map is rendered to the top left hand corner of the screen as shown below: 
 **
 **    +------------------+---------+
@@ -57,6 +57,7 @@ abstract class Viewer {
 		}
 	}
 	
+	** Creates a 'Viewer'.
 	new make(MapHeader mapHeader, Renderer renderer, Rect viewBounds) {
 		this.mapHeader	= mapHeader
 		this.renderer	= renderer
@@ -77,7 +78,7 @@ abstract class Viewer {
 	abstract Void draw(Obj gfx, BlockLayer[] blockLayers := [BlockLayer.background, BlockLayer.foreground1, BlockLayer.foreground2, BlockLayer.foreground3])
 
 
-	** Draws but just a section of the viewing area. To be used when you do not need to render the 
-	** whole screen, but just part of it.
+	** Draws but just a section of the viewing area. 
+	** To be used when you do not need to render the whole screen, but just part of it.
 	abstract Void drawPartial(Obj gfx, Rect dirty, BlockLayer[] blockLayers := [BlockLayer.background, BlockLayer.foreground1, BlockLayer.foreground2, BlockLayer.foreground3])
 }

@@ -1,20 +1,23 @@
 using gfx::Point
 using gfx::Rect
 
-** Renders a `MappyMap` onto the screen. A 'MapViewer' creates a `LayerViewer` for each of the 
-** `Layer`s in the `MappyMap`.
+** Renders a `MappyMap` to the screen. 
+** 'MapViewer' creates a `LayerViewer` for each of the `Layer`s in the `MappyMap`.
 **  
 ** Updating the coordinates of a 'MapViewer' also updates the coordinates of all the underlying 
 ** `LayerViewer`s.
 ** 
 ** Note that the coordinates of a 'MapViewer' are held independently of the coordinates held by 
-** the underlying `LayerViewer`s. i.e. If you were to change the coordinates of the `LayerViewer`s, 
-** the coordinates held by the 'MapViewer' would remain unchanged. 
+** the underlying [LayerViewers]`LayerViewer`. i.e. If you were to change the coordinates of the 
+** [LayerViewers]`LayerViewer`, the coordinates held by the 'MapViewer' would remain unchanged. 
 @Js
 class MapViewer : Viewer {
 	
-	// FIXME: Have a layer enum and a Map, not an Array
+	** The viewers for each 'Layer'.
+	// TODO: Have a layer enum and a Map, not an Array
 	LayerViewer[]	layerViewers	:= [,]	{ private set }
+	
+	** The 'MappyMap' this 'Viewer' renders.
 	MappyMap		map						{ private set }
 	
 	** Creates a `LayerViewer` for each of the 'Layer's in the `MappyMap` and places the viewing 
@@ -30,6 +33,7 @@ class MapViewer : Viewer {
 	
 	// see http://fantom.org/sidewalk/topic/1947#c13080
 	private Bool m_pillarRiserMode := false
+	@NoDoc
 	override Bool pillarRiserMode {
 		set {
 			m_pillarRiserMode = it
@@ -42,6 +46,7 @@ class MapViewer : Viewer {
  
 	// see http://fantom.org/sidewalk/topic/1947#c13080
 	private Point m_coorInPixels := Point.defVal
+	@NoDoc
 	override Point coorInPixels {
 		set {
 			m_coorInPixels = it
@@ -53,6 +58,7 @@ class MapViewer : Viewer {
 	}
 
 	// see http://fantom.org/sidewalk/topic/1947#c13080
+	@NoDoc
 	override Point coorInBlocks {
 		set {
 			coor := it
@@ -71,6 +77,7 @@ class MapViewer : Viewer {
 	}
 	
 	// see http://fantom.org/sidewalk/topic/1947#c13080
+	@NoDoc
 	override Void translatePixels(Int x, Int y) {
 		coorInPixels = coorInPixels.translate(Point(x, y)) 
 		layerViewers.each |layerViewer| {
@@ -79,6 +86,7 @@ class MapViewer : Viewer {
 	}
 
 	// see http://fantom.org/sidewalk/topic/1947#c13080
+	@NoDoc
 	override Void translateBlocks(Int x, Int y) {
 		coorInBlocks = coorInBlocks.translate(Point(x, y)) 
 		layerViewers.each |layerViewer| {
@@ -93,12 +101,14 @@ class MapViewer : Viewer {
 		}
 	}	
 	
+	@NoDoc
 	override Void draw(Obj gfx, BlockLayer[] blockLayers := [BlockLayer.background, BlockLayer.foreground1, BlockLayer.foreground2, BlockLayer.foreground3]) {
 		layerViewers.each |layerViewer| {
 			layerViewer.draw(gfx, blockLayers)
 		}
 	}
 
+	@NoDoc
 	override Void drawPartial(Obj gfx, Rect dirty, BlockLayer[] blockLayers := [BlockLayer.background, BlockLayer.foreground1, BlockLayer.foreground2, BlockLayer.foreground3]) {
 		layerViewers.each |layerViewer| {
 			layerViewer.drawPartial(gfx, dirty, blockLayers)

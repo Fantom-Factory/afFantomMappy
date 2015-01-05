@@ -14,8 +14,6 @@ class TestLayer : Test {
 		verifyEq(layer.sizeInPixels.h, 33 * 17)
 	}
 
-
-
 	Void testGetBlock() {
 		map := MappyMap()
 		map.mapHeader.blockSizeInPixels = Size(31, 17)
@@ -26,5 +24,4 @@ class TestLayer : Test {
 		layer.blockAt(12, 15)
 		layer.blockAt(31, 17)
 	}
-
 }

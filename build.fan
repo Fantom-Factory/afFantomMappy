@@ -5,12 +5,12 @@ class Build : BuildPod {
 	new make() {
 		podName = "afFantomMappy"
 		summary = "A playback library for tile maps created with Mappy"
-		version = Version("1.0.5") 
+		version = Version("1.0.4") 
 
 		meta = [
 			"proj.name"			: "FantomMappy",
-			"tags"				: "misc",
-			"repo.private"		: "true"
+			"repo.tags"			: "misc",
+			"repo.public"		: "true"
 		]
 		
 		depends = [
@@ -19,5 +19,6 @@ class Build : BuildPod {
 		]
 
 		srcDirs = [`test/`, `test/loaders/`, `test/entities/`, `fan/`, `fan/viewers/`, `fan/renderers/`, `fan/loaders/`, `fan/entities/`]
+		resDirs = [`doc/`]
 	}
 }

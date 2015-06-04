@@ -8,7 +8,7 @@
 
 FantomMappy is a playback library for rectangular, hexagonal and isometric tile maps created with [Mappy](http://tilemap.co.uk/mappy.php).
 
-![Mappy Screenshot](mappy.png)
+![Mappy Screenshot](http://pods.fantomfactory.org/pods/afFantomMappy/doc/mappy.png)
 
 Use [Mappy](http://tilemap.co.uk/mappy.php) to create your maps, then use `FantomMappy` to embedd them in your games / applications.
 
@@ -176,4 +176,3 @@ Use a [Viewer](http://pods.fantomfactory.org/pods/afFantomMappy/api/Viewer) to v
     mapViewer.draw(g)
 
 And that's about it.
-

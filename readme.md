@@ -156,7 +156,7 @@ Full API & fandocs are available on the [Fantom Pod Repository](http://pods.fant
 
 And you should see a window with an animated map:
 
-![FantomMappy QuickStart Example](quickStart.png)
+![FantomMappy QuickStart Example](http://pods.fantomfactory.org/pods/afFantomMappy/doc/quickStart.png)
 
 ## Usage
 

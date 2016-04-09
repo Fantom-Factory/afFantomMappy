@@ -18,7 +18,7 @@ class Build : BuildPod {
 			"gfx 1.0" 
 		]
 
-		srcDirs = [`test/`, `test/loaders/`, `test/entities/`, `fan/`, `fan/viewers/`, `fan/renderers/`, `fan/loaders/`, `fan/entities/`]
+		srcDirs = [`fan/`, `fan/entities/`, `fan/loaders/`, `fan/renderers/`, `fan/viewers/`, `test/`, `test/entities/`, `test/loaders/`]
 		resDirs = [`doc/`]
 	}
 }

@@ -1,7 +1,7 @@
-#FantomMappy v1.0.4
+#FantomMappy v1.0.6
 ---
 [![Written in: Fantom](http://img.shields.io/badge/written%20in-Fantom-lightgray.svg)](http://fantom.org/)
-[![pod: v1.0.4](http://img.shields.io/badge/pod-v1.0.4-yellow.svg)](http://www.fantomfactory.org/pods/afFantomMappy)
+[![pod: v1.0.6](http://img.shields.io/badge/pod-v1.0.6-yellow.svg)](http://www.fantomfactory.org/pods/afFantomMappy)
 ![Licence: MIT](http://img.shields.io/badge/licence-MIT-blue.svg)
 
 ## Overview
@@ -16,7 +16,7 @@ Use [Mappy](http://tilemap.co.uk/mappy.php) to create your maps, then use `Fanto
 
 Install `FantomMappy` with the Fantom Repository Manager ( [fanr](http://fantom.org/doc/docFanr/Tool.html#install) ):
 
-    C:\> fanr install -r http://repo.status302.com/fanr/ afFantomMappy
+    C:\> fanr install -r http://pods.fantomfactory.org/fanr/ afFantomMappy
 
 To use in a [Fantom](http://fantom.org/) project, add a dependency to `build.fan`:
 
@@ -176,3 +176,4 @@ Use a [Viewer](http://pods.fantomfactory.org/pods/afFantomMappy/api/Viewer) to v
     mapViewer.draw(g)
 
 And that's about it.
+
